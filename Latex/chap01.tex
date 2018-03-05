@@ -12,6 +12,8 @@ As Redes Neuronais Artificiais (RNA) são inspiradas em modelos sensoriais do pr
 
 %Já a árvore de decisão auxilia na predição da classe de um objeto em um estudo com base em um treinamento prévio. Ou seja, funciona como um algoritmo de aprendizado de máquina supervisionado que é basicamente aplicado em problemas de classificação \citep{FreundYoav1999}. Funciona tanto para variáveis categóricas quando para variáveis dependentes. Nesse algoritmo, a população original é dividida em dois ou mais grupos de populações homogêneas \citep{Simard2000}. 
 
+Assim como as redes neuronais as medidas de similaridade são utilizadas como auxiliadores na predição da classe de um objeto. Ou, seja funciona como um algoritmo de aprendizado de máquina supervisionado que é basicamente aplicado em problemas de classificação\citep{FreundYoav1999}. A abordagem dos problemas de classificação sob a ótica de medidas de semelhança é um dos tópicos mais ativos dentro da área de aprendizado de máquina. O problema consiste em atribuir um rótulo a algum objeto baseado em um conjunto de atributos extraídos do mesmo. Para tal faz-se necessário, um conjunto de dados de treinamento com instâncias nal qual os rótulos dos objetos são conhecidos. 
+
 \section{Redes Neuronais Artificiais}
 
 \citet{McCulloch1943} redigem o trabalho pioneiro onde foi modelado um neurônio cuja resposta dependia do \textit{input}\footnote{Valor de entrada} que provinha de outros neurônios e do peso utilizado.  Já \citet{Rosenblatt1962} cria a teoria de convergência do \textit{Perceptron} onde ele prova que modelos de neurônios possuem propriedades similares ao cérebro humano \citep{Kanal2001}. Neste sentido as rede neuronais artificiais podem realizar performasses sofisticadas no reconhecimento de padrões, mesmo se alguns neurônios forem destruídos \citep{Levy1997}. \citet{Minsky1969} demonstraram que \textit{Perceptrons} somente resolvem uma classe muito limitada de problemas que podem ser linearizados.
@@ -135,3 +137,11 @@ aprendizado com o tempo. Em humanos, a capacidade de aprendizado vai da pequena
 infância até a puberdade. Após este período, o cérebro passar a reter o que fora
 aprendido. Sendo assim o aprendizado é uma função que depende, entre outras
 coisas, do tempo.
+
+\section{Medidas de Semelhança}
+
+Dado um conjunto de dados numéricos, a \textbf{métrica do dado} é qualquer leitura em uma dada escala de intervalo que infere o grau de diferença entre dois objetos.  Dados que são caracterizados como dados \textbf{não-métricos}, são aqueles conjuntos de dados que podem ser coletados em um formato \textit{binário} (0/1),  \textit{ordinário} números que expressam uma posição somente (índice), ou \textit{escala nominal} que são conjuntos de dados não ordenados.
+
+Na análise geométrica do dado se refere aos aspectos geométricos da imagem, análise de padrões ou forma, que trata um conjunto arbitrário de dados como uma nuvem de pontos no espaço  $\Re ^{n}$. O dado passa a ser organizado em uma base de dados indexadas em um espaço métrico\footnote{Este processo é conhecido como indexação métrica.}.
+
+Na análise de agrupamentos (classificação, taxonomia, reconhecimento de padrões) consite em dividir o dado $A$ em um conjunto menor de grupos. 
