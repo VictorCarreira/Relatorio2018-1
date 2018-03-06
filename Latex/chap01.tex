@@ -127,21 +127,150 @@ Os detalhes dos processos que regulam o córtex ainda não foram totalmente eluc
 	\label{homunculo}
 \end{figure}
 
-Um cérebro que sofreu uma comossão grave perde a capacidade de acessar
-determinadas zonas do homúnulo responsáveis por atividades específicas. Contudo
-o cérebro tem a capacidade de destinar outras regiões para o controle destas
-ações que foram previamente perdidas.
+Um cérebro que sofreu uma comoção grave perde a capacidade de acessar determinadas zonas do homúnculo responsáveis por atividades específicas. Contudo o cérebro tem a capacidade de destinar outras regiões para o controle destas ações que foram previamente perdidas.
 
-Além de casos graves como um acidente o cérebro também perde a capacidade de
-aprendizado com o tempo. Em humanos, a capacidade de aprendizado vai da pequena
-infância até a puberdade. Após este período, o cérebro passar a reter o que fora
-aprendido. Sendo assim o aprendizado é uma função que depende, entre outras
-coisas, do tempo.
+Além de casos graves como um acidente o cérebro também perde a capacidade de aprendizado com o tempo. Em humanos, a capacidade de aprendizado vai da pequena infância até a puberdade. Após este período, o cérebro passar a reter o que fora aprendido. Sendo assim o aprendizado é uma função que depende, entre outras coisas, do tempo.
 
 \section{Medidas de Semelhança}
 
-Dado um conjunto de dados numéricos, a \textbf{métrica do dado} é qualquer leitura em uma dada escala de intervalo que infere o grau de diferença entre dois objetos.  Dados que são caracterizados como dados \textbf{não-métricos}, são aqueles conjuntos de dados que podem ser coletados em um formato \textit{binário} (0/1),  \textit{ordinário} números que expressam uma posição somente (índice), ou \textit{escala nominal} que são conjuntos de dados não ordenados.
+Dado um conjunto de dados numéricos, a \textbf{métrica do dado} é qualquer leitura em uma dada escala de intervalo que infere o grau de diferença entre dois objetos.  Dados que são caracterizados como dados \textbf{não-métricos}, são aqueles conjuntos de dados que podem ser coletados em um formato \textit{binário} (0/1),  \textit{ordinário} números que expressam uma posição somente (índice), ou \textit{escala nominal} que são conjuntos de dados não ordenados \citep{Michel2016}.
 
 Na análise geométrica do dado se refere aos aspectos geométricos da imagem, análise de padrões ou forma, que trata um conjunto arbitrário de dados como uma nuvem de pontos no espaço  $\Re ^{n}$. O dado passa a ser organizado em uma base de dados indexadas em um espaço métrico\footnote{Este processo é conhecido como indexação métrica.}.
 
-Na análise de agrupamentos (classificação, taxonomia, reconhecimento de padrões) consite em dividir o dado $A$ em um conjunto menor de grupos. 
+Na análise de agrupamentos (classificação, taxonomia, reconhecimento de padrões) consiste em dividir o dado $A$ em um conjunto menor de grupos. Por exemplo, um grupo de dados que estão próximos em respeito a um determinado critério como propriedades físicas em rochas. 
+
+Neste trabalho são estudadas duas medidas de semelhança especiais. A primeira delas e a métrica de \textit{Euclides} que leva em consideração o cálculo de centroides para avaliar a distância entre dois agrupamentos. A segunda é a métrica de \textit{Mahalanobis} que leva em consideração a forma do agrupamento a ser analisado.   
+
+\subsection{A métrica Euclideana}
+Dado dois conjuntos de dados $a$ e $b$ com pares ordenados $(x,y)$ a distância euclideana pode ser definida como 
+
+\begin{equation}
+(x_{a}-y_{a})^{T}\textbf{A}(x_{b}-y_{b})^{1/2}
+\end{equation}
+
+Onde $\textbf{A}$ é uma matriz não singular, simétrica de dimensão $m \times m $, $x_{a}$ é um vetor de propriedades do agrupamento $a$ com dimensão $m$, $y_{a}$ é um vetor de propriedades do agrupamento $a$ com dimensão $m$, $x_{b}$ é um vetor de propriedades do agrupamento $b$ com dimensão $m$, $y_{b}$ é um vetor de propriedades do agrupamento $b$ também com dimensão $m$.
+
+
+\subsection{A métrica de Mahalanobis}
+
+A distância de Mahalanobis é também conhecida como a distância quadrática. Ela mede a separação entre dois grupos de objetos levando-se em consideração o formato da distribuição dos dados. Suponhamos que nós tenhamos dois grupos de objetos com médias $\bar{x}_{i}$ e $\bar{x}_{j}$, a distância de Mahalanobis é dado pelo seguinte enunciado:
+
+\begin{equation}
+d_{ij}=[(\bar{x}_{i}-\bar{x}_{j})^{T}\textbf{S}^{-1}(\bar{x}_{i}-\bar{x}_{j})]^{\frac{1}{2}}
+\end{equation}
+
+Os dados dos dois grupos devem ter o mesmo número de variáveis (o mesmo número de colunas), mas não necessariamente o mesmo número de dados (cada grupo pode possuir diferentes número de linhas). A matriz covariância para o grupo $i$ é calculada usando uma matriz de dados centralizada $\hat{\textbf{X}}$.
+
+
+\begin{equation}
+\textbf{C}_{i}=\dfrac{1}{n_{i}} \hat{\textbf{X}}^{T}\hat{\textbf{X}}
+\end{equation}
+
+A matriz de covariância agrupada $\textbf{S}$(Pooled Covariance Matrix) dos dois grupos (r,s) é computada como a média ponderada das matrizes de covariância:
+
+\begin{equation}
+\textbf{S}_{i}(r,s)=\dfrac{1}{n}\sum^{g}_{i=1}n_{i}c_{i}(r,s)
+\end{equation}
+
+Onde $C_{1}$ e $C_{2}$ representam os grupos $1$ e $2$ respectivamente.
+
+
+\subsection{Análise de agrupamento}
+
+Ao se criar uma análise de agrupamentos tem-se em vista a caracterização do quão semelhante, ou não, dois ou mais conjuntos de dados podem ser.  Para se determinar em qual situação cada métrica se comporta melhor, foi gerado um teste analítico com vistas a se comparar tanto a distância quanto a forma da distribuição dos dados influi no valor absoluto final das duas métricas. 
+
+No primeiro teste, gerou-se distribuições randômicas circulares de três agrupamentos com seus centros igualmente espaçados. 
+
+\begin{figure}[H]
+	\centering
+	\setlength{\fboxsep}{8pt}
+	\setlength{\fboxrule}{0.1pt}
+	\fbox{
+		\includegraphics[scale=0.29]{Imagens/clusteranalise1.eps}
+	}
+	\caption{Análise de agrupamento 1}
+	\label{AC1}
+\end{figure}
+
+ -------Parâmetros do modelo-------
+ rmax=     0.300E+01
+ rmin=     0.000E+00
+ thetamin=     0.000E+00
+ thetamax=     0.157E+02
+ semente randômica=           5
+ ---------------Dados--------------
+ cluster 1=         404
+ cluster 2=         383
+ cluster 3=         397
+ ------------Distâncias------------
+ Euclideana(I-II)=     0.200E+02
+ Mahalanobeana(I-II)=     0.138E+02
+ Euclideana(I-III)=     0.197E+02
+ Mahalanobeana(I-III)=     0.129E+02
+
+
+O segundo teste apresenta uma leve deformação no agrupamento 1 (em \textcolor{blue}{azul})
+
+\begin{figure}[H]
+	\centering
+	\setlength{\fboxsep}{8pt}
+	\setlength{\fboxrule}{0.1pt}
+	\fbox{
+		\includegraphics[scale=0.29]{Imagens/clusteranalise2.eps}
+	}
+	\caption{Análise de agrupamento 2}
+	\label{AC2}
+\end{figure}
+
+ -------Parâmetros do modelo-------
+ rmax=     0.300E+01
+ rmin=     0.000E+00
+ thetamin=     0.000E+00
+ thetamax=     0.157E+02
+ a=     0.350E+01
+ b=     0.300E+01
+ semente randômica=           9
+ ---------------Dados--------------
+ cluster 1=         405
+ cluster 2=         383
+ cluster 3=         396
+ ------------Distâncias------------
+ Euclideana(I-II)=     0.200E+02
+ Mahalanobeana(I-II)=     0.138E+02
+ Euclideana(I-III)=     0.197E+02
+ Mahalanobeana(I-III)=     0.118E+02
+
+O terceiro teste apresenta o agrupamento 1 com um formato elipsoidal oblato se aproximando mais do agrupamento 3. 
+
+\begin{figure}[H]
+	\centering
+	\setlength{\fboxsep}{8pt}
+	\setlength{\fboxrule}{0.1pt}
+	\fbox{
+		\includegraphics[scale=0.29]{Imagens/clusteranalise3.eps}
+	}
+	\caption{Análise de agrupamento 3}
+	\label{AC3}
+\end{figure}
+
+ -------Parâmetros do modelo-------
+ rmax=     0.300E+01
+ rmin=     0.000E+00
+ thetamin=     0.000E+00
+ thetamax=     0.157E+02
+ a=     0.150E+02
+ b=     0.300E+01
+ semente randômica=          17
+ ---------------Dados--------------
+ cluster 1=         405
+ cluster 2=         384
+ cluster 3=         395
+ ------------Distâncias------------
+ Euclideana(I-II)=     0.200E+02
+ Mahalanobeana(I-II)=     0.138E+02
+ Euclideana(I-III)=     0.194E+02
+ Mahalanobeana(I-III)=     0.352E+01
+
+
+
+
