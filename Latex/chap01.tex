@@ -177,9 +177,9 @@ Onde $C_{1}$ e $C_{2}$ representam os grupos $1$ e $2$ respectivamente.
 
 \subsection{Análise de agrupamento}
 
-Ao se criar uma análise de agrupamentos tem-se em vista a caracterização do quão semelhante, ou não, dois ou mais conjuntos de dados podem ser.  Para se determinar em qual situação cada métrica se comporta melhor, foi gerado um teste analítico com vistas a se comparar tanto a distância quanto a forma da distribuição dos dados influi no valor absoluto final das duas métricas. 
+Ao se criar uma análise de agrupamentos tem-se em vista a caracterização do quão semelhante, ou não, dois ou mais conjuntos de dados podem ser.  Para se determinar em qual situação cada métrica se comporta melhor, foi gerado um teste analítico com vistas a se comparar tanto a distância quanto a forma da distribuição dos dados influem no valor absoluto final das duas métricas. 
 
-No primeiro teste, gerou-se distribuições randômicas circulares de três agrupamentos com seus centros igualmente espaçados. 
+No primeiro teste, gerou-se distribuições randômicas circulares de três agrupamentos com seus centros igualmente espaçados como apresentado na Fig. \ref{AC1}. Nota-se que os clusters encontram-se a $20$ unidades de distância entre seus respectivos centros. 
 
 \begin{figure}[H]
 	\centering
@@ -192,21 +192,39 @@ No primeiro teste, gerou-se distribuições randômicas circulares de três agru
 	\label{AC1}
 \end{figure}
 
- -------Parâmetros do modelo-------
- rmax=     0.300E+01
- rmin=     0.000E+00
- thetamin=     0.000E+00
- thetamax=     0.157E+02
- semente randômica=           5
- ---------------Dados--------------
- cluster 1=         404
- cluster 2=         383
- cluster 3=         397
- ------------Distâncias------------
- Euclideana(I-II)=     0.200E+02
- Mahalanobeana(I-II)=     0.138E+02
- Euclideana(I-III)=     0.197E+02
- Mahalanobeana(I-III)=     0.129E+02
+Um
+
+\begin{table}[H]
+	\centering
+	\caption{Parâmetros dos teste analítico para comparação das métricas.}
+	\label{analise1}
+	\begin{tabular}{lccc}
+		\hline
+		Parâmetros       & \textcolor{blue}{Cluster1} & \textcolor{red}{Cluster 2} & \textcolor{olive}{Cluster 3} \\ \hline
+		Raio máximo      & 0.300E+01 & 0.300E+01 & 0.300E+01 \\
+		Raio mínimo      & 0.000E+00 & 0.000E+00 & 0.000E+00 \\
+		Ângulo máximo    & 0.157E+02 & 0.157E+02 & 0.157E+02 \\
+		Ângulo mínimo    & 0.000E+00 & 0.000E+00 & 0.000E+00 \\
+		Semente                & 5                 & 5                  & 5         \\
+		Número de pontos & 404       & 383       & 397   \\        \hline
+	\end{tabular}
+\end{table}
+
+
+
+ 
+ \begin{table}[H]
+ 	\centering
+ 	\label{metrica1}
+ 	\begin{tabular}{|l|l|}
+ 		\hline
+ 		\multicolumn{2}{|c|}{Distâncias}  \\ \hline
+ 		Euclideana (I-II)     & 0.200E+02 \\ \hline
+ 		Mahalanobeana (I-II)  & 0.138E+02 \\ \hline
+ 		Euclideana (I-III)    & 0.197E+02 \\ \hline
+ 		Mahalanobeana (I-III) & 0.129E+02 \\ \hline
+ 	\end{tabular}
+ \end{table}
 
 
 O segundo teste apresenta uma leve deformação no agrupamento 1 (em \textcolor{blue}{azul})
@@ -222,23 +240,39 @@ O segundo teste apresenta uma leve deformação no agrupamento 1 (em \textcolor{
 	\label{AC2}
 \end{figure}
 
- -------Parâmetros do modelo-------
- rmax=     0.300E+01
- rmin=     0.000E+00
- thetamin=     0.000E+00
- thetamax=     0.157E+02
- a=     0.350E+01
- b=     0.300E+01
- semente randômica=           9
- ---------------Dados--------------
- cluster 1=         405
- cluster 2=         383
- cluster 3=         396
- ------------Distâncias------------
- Euclideana(I-II)=     0.200E+02
- Mahalanobeana(I-II)=     0.138E+02
- Euclideana(I-III)=     0.197E+02
- Mahalanobeana(I-III)=     0.118E+02
+
+\begin{table}[H]
+	\centering
+	\caption{Parâmetros dos teste analítico para comparação das métricas.}
+	\label{analise2}
+	\begin{tabular}{lccc}
+		\hline
+		Parâmetros       & \textcolor{blue}{Cluster1} & \textcolor{red}{Cluster 2} & \textcolor{olive}{Cluster 3} \\ \hline
+		Raio máximo      & --- & 0.300E+01 & 0.300E+01 \\
+		Raio mínimo      & --- & 0.000E+00 & 0.000E+00 \\
+		Ângulo máximo    & 0.157E+02 & 0.157E+02 & 0.157E+02 \\
+		Ângulo mínimo    & 0.000E+00 & 0.000E+00 & 0.000E+00 \\
+		Eixo maior        & 0.350E+01        & ----         & ---         \\
+		Eixo menor          & 0.300E+01        & ---       & ---        \\
+		Semente          & 9         & 9         & 9         \\
+		Número de pontos & 405       & 383       & 396   \\   \hline
+	\end{tabular}
+\end{table}
+
+
+ \begin{table}[H]
+ 	\centering
+ 	\label{metrica2}
+ 	\begin{tabular}{|l|l|}
+ 		\hline
+ 		\multicolumn{2}{|c|}{Distâncias}  \\ \hline
+ 		Euclideana (I-II)     & 0.200E+02 \\ \hline
+ 		Mahalanobeana (I-II)  & 0.138E+02 \\ \hline
+ 		Euclideana (I-III)    & 0.197E+02 \\ \hline
+ 		Mahalanobeana (I-III) &  0.118E+02 \\ \hline
+ 	\end{tabular}
+ \end{table}
+
 
 O terceiro teste apresenta o agrupamento 1 com um formato elipsoidal oblato se aproximando mais do agrupamento 3. 
 
@@ -253,23 +287,38 @@ O terceiro teste apresenta o agrupamento 1 com um formato elipsoidal oblato se a
 	\label{AC3}
 \end{figure}
 
- -------Parâmetros do modelo-------
- rmax=     0.300E+01
- rmin=     0.000E+00
- thetamin=     0.000E+00
- thetamax=     0.157E+02
- a=     0.150E+02
- b=     0.300E+01
- semente randômica=          17
- ---------------Dados--------------
- cluster 1=         405
- cluster 2=         384
- cluster 3=         395
- ------------Distâncias------------
- Euclideana(I-II)=     0.200E+02
- Mahalanobeana(I-II)=     0.138E+02
- Euclideana(I-III)=     0.194E+02
- Mahalanobeana(I-III)=     0.352E+01
+\begin{table}[H]
+	\centering
+	\caption{Parâmetros dos teste analítico para comparação das métricas.}
+	\label{analise3}
+	\begin{tabular}{lccc}
+		\hline
+		Parâmetros       & \textcolor{blue}{Cluster1} & \textcolor{red}{Cluster 2} & \textcolor{olive}{Cluster 3} \\ \hline
+		Raio máximo      & --- & 0.300E+01 & 0.300E+01 \\
+		Raio mínimo      & --- & 0.000E+00 & 0.000E+00 \\
+		Ângulo máximo    & 0.157E+02 & 0.157E+02 & 0.157E+02 \\
+		Ângulo mínimo    & 0.000E+00 & 0.000E+00 & 0.000E+00 \\
+		Eixo maior        & 0.150E+02        & ----         & ---         \\
+		Eixo menor          &  0.300E+01        & ---       & ---        \\
+		Semente          & 17         & 17         & 17         \\
+		Número de pontos & 405       & 384       & 395  \\   \hline
+	\end{tabular}
+\end{table}
+
+
+ \begin{table}[H]
+ 	\centering
+ 	\label{metrica3}
+ 	\begin{tabular}{|l|l|}
+ 		\hline
+ 		\multicolumn{2}{|c|}{Distâncias}  \\ \hline
+ 		Euclideana (I-II)     & 0.200E+02 \\ \hline
+ 		Mahalanobeana (I-II)  & 0.138E+02 \\ \hline
+ 		Euclideana (I-III)    & 0.194E+02 \\ \hline
+ 		Mahalanobeana (I-III) & 0.352E+01 \\ \hline
+ 	\end{tabular}
+ \end{table}
+
 
 
 
