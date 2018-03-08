@@ -1,6 +1,6 @@
 \chapter{Resultados e Discussões}
 
-A Fig. \ref{clusterT1} apresenta à variação das propriedades físicas analisadas por agrupamento de classes de rochas para o poço T$1$. Foi utilizado para tal foi adotado um padrão de cores para cada tipo litológico. 
+A Fig. \ref{clusterT1} apresenta à análise de agrupamentos das propriedades físicas analisadas por classes de rochas para o poço T$1$. Foi utilizado para tal foi adotado um padrão de cores para cada tipo litológico. 
 
 \begin{figure}[H]
 	\centering
@@ -109,7 +109,7 @@ O teste de convergência é realizado durante a fase de treinamento e mostra que
 
 \section{Identificação}
 
-A seguir são apresentados os resultados da etapa de classificação da rede. Nesta fase, dois poços foram utilizados chamados de poços C$1$ e C$2$. O primeiro destes localizado a SW do perfil, Fig. \ref{modelo}, possui $7$km de profundidade. A saída da rede, para o poço C$1$ está localizada ao lado direito da Fig. \ref{Class C1}. Ao lado esquerdo é apresentada o poço original. Abaixo é mostrado uma breve estatística deste processo de identificação 
+A seguir são apresentados os resultados da etapa de classificação da rede foram acrescentados os resultados dos classificadores euclideanos e de Mahalanobis. Nesta fase, dois poços foram utilizados chamados de poços C$1$ e C$2$. O primeiro destes localizado a SW do perfil, Fig. \ref{modelo}, possui $7$km de profundidade. A saída da rede, para o poço C$1$ está localizada ao lado direito da Fig. \ref{Class C1}. Ao lado esquerdo é apresentada o poço original. Abaixo é mostrado uma breve estatística deste processo de identificação da rede. Ao lado esquerdo do poço identificado pela rede estão os resultados obtidos pelos classificadores euclideano e de Mahalanobis. 
 
 
 \begin{figure}[H]
@@ -117,14 +117,14 @@ A seguir são apresentados os resultados da etapa de classificação da rede. Ne
 	\setlength{\fboxsep}{8pt}
 	\setlength{\fboxrule}{0.1pt}
 	\fbox{
-		\includegraphics[scale=0.6]{Imagens/IDC1.png}
+		\includegraphics[scale=0.5]{Imagens/IDC1020118.png}
 	}
 	\caption{Dado de saída da rede para o poço de classificação C1.}
 	\label{Class C1}
 \end{figure} 
 
 
-O processo de identificação foi repetido, contudo, desta vez, para o caso do ao poço C$2$. Este localiza-se mais a NE do perfil, Fig. \ref{modelo}, no topo de um alto estrutural com igual profundidade de $7$ km. A saída da rede, para o poço C$2$ está localizada ao lado direito da Fig. \ref{Class C2}. Ao lado esquerdo é apresentada o poço original. Abaixo é mostrado uma breve estatística do processo de identificação.   
+O processo de identificação foi repetido, contudo, desta vez, para o caso do ao poço C$2$. Este localiza-se mais a NE do perfil, Fig. \ref{modelo}, no topo de um alto estrutural com igual profundidade de $7$ km. A saída da rede, para o poço C$2$ está localizada ao lado direito da Fig. \ref{Class C2}. Ao lado esquerdo é apresentada o poço original. Abaixo é mostrado uma breve estatística do processo de identificação.  Ao lado esquerdo do poço identificado pela rede estão os resultados obtidos pelos classificadores euclideano e de Mahalanobis.  
 
 
 \begin{figure}[H]
@@ -132,12 +132,39 @@ O processo de identificação foi repetido, contudo, desta vez, para o caso do a
 	\setlength{\fboxsep}{8pt}
 	\setlength{\fboxrule}{0.1pt}
 	\fbox{
-		\includegraphics[scale=0.6]{Imagens/IDC2.png}
+		\includegraphics[scale=0.5]{Imagens/IDC2020118.png}
 	}
 	\caption{Dado de saída da rede para o poço de classificação C2.}
 	\label{Class C2}
 \end{figure} 
 
 
-Em ambos os casos de identificação, o número de neurônios vitoriosos igualou-se ao total de neurônios da rede. Isto indica o máximo de aproveitamento durante os processos, com um tempo de máquina atingindo $25$ segundos.  
+Em ambos os casos de identificação, o número de neurônios vitoriosos igualou-se ao total de neurônios da rede, Tab. \ref{Estatistica da rede}. Isto indica o máximo de aproveitamento durante os processos, com um tempo de máquina atingindo $25$ segundos. 
+
+
+\begin{table}[H]
+	\centering
+	\caption{}
+	\label{Estatistica da rede}
+	\begin{tabular}{@{}lcc@{}}
+		\toprule
+		\multicolumn{3}{c}{Estatística da Rede}         \\ \midrule
+		Dados                       & Poço C1 & Poço C2 \\
+		Dados de treinamento        & 697     & 697     \\
+		Dados a serem classificados & 699     & 698     \\
+		Neurônios da Rede           & 400     & 400     \\
+		Neurônios vitoriosos        & 400     & 400     \\
+		Neurônios sem uso           & 0       & 0       \\
+		Erro                        & 11      & 5       \\ \bottomrule
+	\end{tabular}
+\end{table} 
+
+
+ Os classificadores apresentaram dois comportamentos distintos. No poço C$1$, o classificador de Euclides apresentou $42$ erros confundindo rochas do embasamento com rochas com $20\%$ de conglomerado e embasamento. No poço C$2$, o classificador de Euclides apresentou um maior número de erros $12$ associados ao embasamento cristalino classificando alguns pontos como conglomerado com $20\%$ de conglomerado e embasamento. 
+
+Em contra-partida, o classificador de Mahalanobis apresentou $79$ erros, no total do poço C$1$ trocando as rochas do embasamento e conglomerado por dois tipos específicos de rocha: as rochas do $20\%$ e $60\%$ CE. E apresentou $128$ erros bem distribuídos ao longo das rochas do embasamento e conglomerado, no poço C$2$ confundindo-as com rochas de $60\%$ e $20\%$ de conglomerado com embasamento. 
+
+
+
+
 
