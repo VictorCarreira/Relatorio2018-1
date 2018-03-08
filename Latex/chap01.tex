@@ -1,4 +1,5 @@
 \chapter{Introdução}
+\label{introducao}
 
 O ser humano vem usando a sua habilidade de reconhecimento de padrões desde  muito antes do início do processo civilizatório. Grupos de humanos paleolíticos já faziam registro dos padrões migratórios de certos grupos de cervídeos. Durante a aurora da revolução neolítica, nossa capacidade de reconhecimento de padrões foi direcionada para a agricultura com a criação de monumentos que registraram a mudança das estações ao longo do ano.
 
@@ -150,6 +151,9 @@ Dado dois conjuntos de dados $a$ e $b$ com pares ordenados $(x,y)$ a distância 
 
 Onde $\textbf{A}$ é uma matriz não singular, simétrica de dimensão $m \times m $, $x_{a}$ é um vetor de propriedades do agrupamento $a$ com dimensão $m$, $y_{a}$ é um vetor de propriedades do agrupamento $a$ com dimensão $m$, $x_{b}$ é um vetor de propriedades do agrupamento $b$ com dimensão $m$, $y_{b}$ é um vetor de propriedades do agrupamento $b$ também com dimensão $m$.
 
+A métrica euclideana é de fácil compreensão. Contudo sua utilização apenas apresenta bons resultados, quando todas as classes possuam a mesma variância, em todas as propriedades analisadas. Além disso, as propriedades não devem ter possuir nenhum tipo de correlação, em resumo, elas devem ser circulares. No espaço de propriedades físicas das rochas isso raramente ocorre. 
+
+
 
 \subsection{A métrica de Mahalanobis}
 
@@ -157,6 +161,7 @@ A distância de Mahalanobis é também conhecida como a distância quadrática. 
 
 \begin{equation}
 d_{ij}=[(\bar{x}_{i}-\bar{x}_{j})^{T}\textbf{S}^{-1}(\bar{x}_{i}-\bar{x}_{j})]^{\frac{1}{2}}
+\label{maha}
 \end{equation}
 
 Os dados dos dois grupos devem ter o mesmo número de variáveis (o mesmo número de colunas), mas não necessariamente o mesmo número de dados (cada grupo pode possuir diferentes número de linhas). A matriz covariância para o grupo $i$ é calculada usando uma matriz de dados centralizada $\hat{\textbf{X}}$.
@@ -176,6 +181,7 @@ Onde $C_{1}$ e $C_{2}$ representam os grupos $1$ e $2$ respectivamente.
 
 
 \subsection{Análise de agrupamento}
+\label{teste}
 
 Ao se criar uma análise de agrupamentos tem-se em vista a caracterização do quão semelhante, ou não, dois ou mais conjuntos de dados podem ser.  Para se determinar em qual situação cada métrica se comporta melhor, foi gerado um teste analítico com vistas a se comparar tanto a distância quanto a forma da distribuição dos dados influem no valor absoluto final das duas métricas. 
 
@@ -186,13 +192,13 @@ No primeiro teste, gerou-se distribuições randômicas circulares de três agru
 	\setlength{\fboxsep}{8pt}
 	\setlength{\fboxrule}{0.1pt}
 	\fbox{
-		\includegraphics[scale=0.29]{Imagens/clusteranalise1.eps}
+		\includegraphics[scale=0.20]{Imagens/clusteranalise1.eps}
 	}
 	\caption{Análise de agrupamento 1}
 	\label{AC1}
 \end{figure}
 
-Um
+O primeiro caso estudado apresentam três circunferências compostas por diferentes conjuntos de dados. Os parâmetros utilizados para criar a primeira situação de estudo são apresentadas na Tab. \ref{analise1}.
 
 \begin{table}[H]
 	\centering
@@ -210,8 +216,9 @@ Um
 	\end{tabular}
 \end{table}
 
+Para os casos em que a distribuição, no espaço de propriedades, apresenta simetria em ambos os eixos as métricas apresentam uma pequena diferença entre si. A distância de Euclides medida entre os agrumamentos I e II foi de $20,0$ unidades de medida, enquanto que a mesma distância medida entre os clusters I-III foi de $19,8$ unidades de medida. Tal diferença se deve a imprecisão associada ao sorteio randômico e o deslocamento dos centros das distribuições. 
 
-
+A distância de Mahalanobis leva em consideração a forma das distribuições de dados ao longo do espaço de propriedades.  O resultado desta métrica para os agrupamentos I-II foi de $13,8$, enquanto que a mesma métrica para os agrupamentos I-III foi de $12,9$. Mostrando que os resultados se afastam um pouco mais.
  
  \begin{table}[H]
  	\centering
@@ -227,23 +234,26 @@ Um
  \end{table}
 
 
-O segundo teste apresenta uma leve deformação no agrupamento 1 (em \textcolor{blue}{azul})
+O segundo teste apresenta uma leve deformação no agrupamento I (em \textcolor{blue}{azul}), Fig. \ref{AC2}.  Um pequeno aumento do eixo horizontal muda a distribuição para uma forma levemente elipsoidal de dados no espaço. Os demais clusters continuam com uma distribuição circular.
+
+
 
 \begin{figure}[H]
 	\centering
 	\setlength{\fboxsep}{8pt}
 	\setlength{\fboxrule}{0.1pt}
 	\fbox{
-		\includegraphics[scale=0.29]{Imagens/clusteranalise2.eps}
+		\includegraphics[scale=0.20]{Imagens/clusteranalise2.eps}
 	}
 	\caption{Análise de agrupamento 2}
 	\label{AC2}
 \end{figure}
 
+A Tab. \ref{analise2} mostram os parâmetros utilizados para a criação de cada um dos clusters. Salienta-se a principal mudança foi um leve aumento do eixo horizontal da ordem de $0,5$ unidades de medida. Os demais parâmetros tais como posição e número de dados dos clusters permaneceram inalterados. 
 
 \begin{table}[H]
 	\centering
-	\caption{Parâmetros dos teste analítico para comparação das métricas.}
+	\caption{Parâmetros do segundo teste analítico.}
 	\label{analise2}
 	\begin{tabular}{lccc}
 		\hline
@@ -259,6 +269,8 @@ O segundo teste apresenta uma leve deformação no agrupamento 1 (em \textcolor{
 	\end{tabular}
 \end{table}
 
+No segundo caso, a distância de Euclides permaneceu inalterada para ambos os casos, tanto na distância entre os agrupamentos I-II e I-III. Isso se deve ao fato de os centroides permanecerem inalterados para as análises de agrupamentos 1 e 2, observando-se um valor de $20,0$ e $19,7$ unidades de distância. 
+A distância de Mahalanobis sofreu o maior impacto no seu valor absoluto, na ordem de $2$ unidades de medida entre os agrupamentos I-III. De maneira geral os padrões de comportamento das métricas permaneceram inalterados, com exceção do caso aonde a Mahalanobis foi de $11,8$ unidades de medida demonstrando a sensibilidade esperada para deformações em grupos de dados. Enquanto que o valor encontrado para o agrupamento I-II foi de $13,8$, muito semelhante ao do teste anterior. 
 
  \begin{table}[H]
  	\centering
@@ -274,18 +286,22 @@ O segundo teste apresenta uma leve deformação no agrupamento 1 (em \textcolor{
  \end{table}
 
 
-O terceiro teste apresenta o agrupamento 1 com um formato elipsoidal oblato se aproximando mais do agrupamento 3. 
+O terceiro teste apresenta o agrupamento 1 com um formato elipsoidal oblato se aproximando mais do agrupamento 3. Este comportamento é retratado na Fig. \ref{AC3}. Os demais conjuntos de agrupamentos permaneceram com a mesma forma dos testes anteriores. 
 
 \begin{figure}[H]
 	\centering
 	\setlength{\fboxsep}{8pt}
 	\setlength{\fboxrule}{0.1pt}
 	\fbox{
-		\includegraphics[scale=0.29]{Imagens/clusteranalise3.eps}
+		\includegraphics[scale=0.25]{Imagens/clusteranalise3.eps}
 	}
 	\caption{Análise de agrupamento 3}
 	\label{AC3}
 \end{figure}
+
+
+A deformação explícita no agrupamento 1 se deu por conta do aumento de $11,5$ unidades de medida do eixo horizontal. Essa perturbação na forma da elipse em contraste com os demais clusters é descrita na Tab. \ref{analise3}.
+
 
 \begin{table}[H]
 	\centering
@@ -319,7 +335,8 @@ O terceiro teste apresenta o agrupamento 1 com um formato elipsoidal oblato se a
  	\end{tabular}
  \end{table}
 
+A distância de Euclides permaneceu inalterada dos três casos estudados entre os três agrupamentos. Apresentando o valor de $2,0$ e $19,4$ para as distâncias entre os agrupamentos I-II e I-III respectivamente. Contudo, o cômputo da distância de Mahalanobis apresentou uma grande diferença se comparado as análises anteriores. Apresentando o valor de $13,8$ unidades de medida entre os agrupamentos I-II e $3,5$ unidades de medida entre os agrupamentos I-III.  
 
-
+Esta pequena análise demonstra que o cômputo da distância de Mahalanobis está intimamente relacionada com a forma da distribuição dos dados dentro do espaço de propriedades quando comparada a distância Euclideana. Isto se deve ao cálculo da matriz de covariância para cada classe de dados \ref{maha}, que permite levar em conta a forma do agrupamento em questão. 
 
 
