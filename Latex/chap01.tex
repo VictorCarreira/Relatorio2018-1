@@ -143,24 +143,79 @@ Na análise de agrupamentos (classificação, taxonomia, reconhecimento de padr�
 Neste trabalho são estudadas duas medidas de semelhança especiais. A primeira delas e a métrica de \textit{Euclides} que leva em consideração o cálculo de centroides para avaliar a distância entre dois agrupamentos. A segunda é a métrica de \textit{Mahalanobis} que leva em consideração a forma do agrupamento a ser analisado.   
 
 \subsection{A métrica Euclideana}
-Dado dois conjuntos de dados $a$ e $b$ com pares ordenados $(x,y)$ a distância euclideana pode ser definida como 
+
+Dado dois conjuntos de agrupamentos distintos, $\theta$($\bar{x}_{i},\bar{y}_{i}$) e $\beta$($\bar{x}_{j},\bar{y}_{j}$), os seus vetores de coordenadas cartesianas podem ser definidos como
+
+\begin{multicols}{2}
+	\begin{equation}
+	 \textbf{x}^{i}=
+		\begin{bmatrix} 
+		x_{1}^{i} \\
+		x_{2}^{i} \\
+		x_{2}^{i} \\
+		\vdots \\
+		x_{m}^{i}
+		\end{bmatrix}
+	\end{equation}
+	
+   \begin{equation}
+      \textbf{y}^{i}=
+    	\begin{bmatrix} 
+       	y_{1}^{i} \\
+    	y_{2}^{i} \\
+    	y_{2}^{i} \\
+	     \vdots \\
+	    y_{m}^{i}
+    	\end{bmatrix}
+   \end{equation}
+\end{multicols}
+
+para um agrupamento $\theta$, e 
+
+\begin{multicols}{2}
 
 \begin{equation}
-(x_{a}-y_{a})^{T}\textbf{A}(x_{b}-y_{b})^{1/2}
+     \textbf{x}^{j}=
+		\begin{bmatrix} 
+		x_{1}^{j} \\
+		x_{2}^{j} \\
+		x_{2}^{j} \\
+		\vdots \\
+		x_{n}^{j}
+		\end{bmatrix}
 \end{equation}
 
-Onde $\textbf{A}$ é uma matriz não singular, simétrica de dimensão $m \times m $, $x_{a}$ é um vetor de propriedades do agrupamento $a$ com dimensão $m$, $y_{a}$ é um vetor de propriedades do agrupamento $a$ com dimensão $m$, $x_{b}$ é um vetor de propriedades do agrupamento $b$ com dimensão $m$, $y_{b}$ é um vetor de propriedades do agrupamento $b$ também com dimensão $m$.
+\begin{equation}
+      \textbf{y}^{j}=
+		\begin{bmatrix} 
+		y_{1}^{j} \\
+		y_{2}^{j} \\
+		y_{2}^{j} \\
+		\vdots \\
+		y_{n}^{j}
+		\end{bmatrix}
+\end{equation}
+\end{multicols}
 
-A métrica euclideana é de fácil compreensão. Contudo sua utilização apenas apresenta bons resultados, quando todas as classes possuam a mesma variância, em todas as propriedades analisadas. Além disso, as propriedades não devem ter possuir nenhum tipo de correlação, em resumo, elas devem ser circulares. No espaço de propriedades físicas das rochas isso raramente ocorre. 
+para outro agrupamento  $\beta$.  A métrica euclideana, na sua forma mais genérica, pode ser definida como uma distância ponderada, de acordo com a Eq. \ref{eucli}.
 
+\begin{equation}
+[(\bar{\textbf{x}_{i}}-\bar{\textbf{x}}_{j})^{T}\textbf{A}(\bar{\textbf{y}}_{i}-\bar{\textbf{y}}_{j})]^{1/2}
+\label{eucli}
+\end{equation}
 
+Onde $\textbf{A}$ é uma matriz não-singular e simétrica de dimensão $m \times n $ e com $m=n$, $\bar{\textbf{x}}_{i}$ é a média do vetor de coordenadas cartesianas do agrupamento $\theta$ com dimensão $m$, $\bar{\text{y}}_{i}$ é a média do segundo vetor de coordenadas do agrupamento $\theta$ com dimensão $m$, $\bar{\textbf{x}}_{j}$ é a média do vetor de coordenadas do agrupamento $\beta$ com dimensão $n$, $\bar{\textbf{y}}_{j}$ é a média do segundo vetor de coordenadas cartesianas do agrupamento $\beta$ também com dimensão $n$.
+
+Nos casos em que $\textbf{A} = \textbf{I}$, onde $\textbf{I}$ é a matriz identidade obtém-se a métrica euclideana não-ponderada, que é o caso estudado neste trabalho. 
+
+A métrica euclideana é de fácil compreensão. Contudo sua utilização apenas apresenta bons resultados, quando todas as classes possuam a mesma variância. Além disso, os elementos dos vetores não devem possuir nenhum tipo de correlação entre si, em resumo, estes devem ser circulares. E no espaço de propriedades, onde os elementos dos vetores se distribuem, isso raramente ocorre. 
 
 \subsection{A métrica de Mahalanobis}
 
-A distância de Mahalanobis é também conhecida como a distância quadrática. Ela mede a separação entre dois grupos de objetos levando-se em consideração o formato da distribuição dos dados. Suponhamos que nós tenhamos dois grupos de objetos com médias $\bar{x}_{i}$ e $\bar{x}_{j}$, a distância de Mahalanobis é dado pelo seguinte enunciado:
+A distância de Mahalanobis é um caso particular da métrica euclideana onde, no lugar da matriz $\textbf{A}$, utiliza-se a matriz de covariância agrupada inversa $\textbf{S}$. Esta métrica mede a separação entre dois grupos de objetos levando-se em consideração o formato da distribuição dos dados. Suponhamos que nós tenhamos dois grupos de objetos com médias $\bar{\textbf{x}}_{i}$ e $\bar{\textbf{x}}_{j}$, a distância de Mahalanobis é dado pelo seguinte enunciado, Eq. \ref{maha}:
 
 \begin{equation}
-d_{ij}=[(\bar{x}_{i}-\bar{x}_{j})^{T}\textbf{S}^{-1}(\bar{x}_{i}-\bar{x}_{j})]^{\frac{1}{2}}
+[(\bar{\textbf{x}_{i}}-\bar{\textbf{x}}_{j})^{T}\textbf{S}^{-1}(\bar{\textbf{y}}_{i}-\bar{\textbf{y}}_{j})]^{1/2}
 \label{maha}
 \end{equation}
 
@@ -168,16 +223,19 @@ Os dados dos dois grupos devem ter o mesmo número de variáveis (o mesmo númer
 
 
 \begin{equation}
-\textbf{C}_{i}=\dfrac{1}{n_{i}} \hat{\textbf{X}}^{T}\hat{\textbf{X}}
+\textbf{C}_{i}=\dfrac{1}{n} \hat{\textbf{X}_{i}}^{T}\hat{\textbf{X}_{i}}
 \end{equation}
 
-A matriz de covariância agrupada $\textbf{S}$(Pooled Covariance Matrix) dos dois grupos (r,s) é computada como a média ponderada das matrizes de covariância:
+Onde $n=\sum_{i} n_{i}$, ou seja a soma de todos os dados de todos os grupos. 
+
+
+A matriz de covariância agrupada $\textbf{S}$ (\textit{Pooled Covariance Matrix}) dos dois agrupamentos ($\theta, \beta$) é computada como a média ponderada das matrizes de covariância:
 
 \begin{equation}
-\textbf{S}_{i}(r,s)=\dfrac{1}{n}\sum^{g}_{i=1}n_{i}c_{i}(r,s)
+\textbf{S}(\theta, \beta)=\dfrac{1}{n}\sum^{g}_{i=1}n_{i}C_{i}
 \end{equation}
 
-Onde $C_{1}$ e $C_{2}$ representam os grupos $1$ e $2$ respectivamente.
+Onde $\theta$ e $\beta$ representam os dois agrupamentos e $g$ é o número de agrupamentos.
 
 
 \subsection{Análise de agrupamento}
